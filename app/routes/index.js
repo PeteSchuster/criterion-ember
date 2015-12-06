@@ -9,5 +9,15 @@ export default Ember.Route.extend({
       first: adapter.find(1),
       second: adapter.find(2),
     };
+  },
+
+  setupController: function (controller, model) {
+    model.first.then(function(data) {
+        controller.set('first', data);
+    });
+
+    model.second.then(function(data) {
+        controller.set('second', data);
+    });
   }
 });
